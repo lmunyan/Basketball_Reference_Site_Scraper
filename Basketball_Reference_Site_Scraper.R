@@ -1,4 +1,7 @@
-#metric options: per_game, totals, per_minute, per_poss, advanced
+#metric options: per_game, totals, per_minute, per_poss, advanced, ratings
+
+#Entering per_game will scrape a player's per game metrics; totals will pull a player's total raw statistics ie 585 rebounds; per_minute gives you player statistics per 36 minutes; advanced pulls the advanced metrics for all active players that season; entering ratings gives you team level data and is the only option for the metric function that will provide you team level statistics
+
 NBA_Leaders <- function(year, metric){
   #read in required packages
   require(data.table)
@@ -31,4 +34,6 @@ NBA_Leaders <- function(year, metric){
 }
 
 #watch the function in action
+
+#metric options: per_game, totals, per_minute, per_poss, advanced, ratings
 NBA_Leaders(year= 2012:2016, metric = "per_minute")
