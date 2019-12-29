@@ -4,7 +4,7 @@ NBA_Player_Stats <- function(names){
   require(stringr)
   require(dplyr)
   
-  player.data <- data.frame()
+  player.data <- list()
   
   for(i in 1:length(names)){
     
@@ -24,8 +24,11 @@ NBA_Player_Stats <- function(names){
       as.data.frame() %>%
       mutate(Name = names[i])
     
-    player.data <- rbind(player.data, player)
+    player.data[[i]] <- player
   }
+  
+  player.data <- bind_rows(player.data)
+  
   return(player.data)
 }
 
