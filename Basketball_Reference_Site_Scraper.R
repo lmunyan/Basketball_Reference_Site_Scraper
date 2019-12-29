@@ -8,8 +8,8 @@ NBA_Leaders <- function(year, metric){
   require(rvest)
   require(dplyr)
   
-  #initiate blank dataframe for loop
-  combined <- data.frame()
+  #initiate blank list for loop
+  combined <- list()
   
   #loop for scraping basketball reference and binding all years together
   for(i in 1: length(year)){
@@ -24,11 +24,11 @@ NBA_Leaders <- function(year, metric){
       as.data.frame() %>%
       mutate(Year = year[i])
     
-    combined <- rbind(combined, test)
+    combined[[i]] <- test
   }
-  #write output to a csv file
-  
-  #write the data frame to global enviroment for further manipulation
+#convert list to data frame
+ combined <- bind_rows(combined) 
+ 
   return(combined)
 }
 
